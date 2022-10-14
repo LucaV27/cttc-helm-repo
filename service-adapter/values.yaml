@@ -1,0 +1,90 @@
+# Default values for service-adapter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: lvettoricttc/test-sa
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: NodePort
+  port: 30001
+
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+saifconf: |
+  IF:
+    if_ip: "192.168.211.237"
+    if_port: 1883
+    if_id: "15858efa-334c-4aca-99e5-d9c7499be59d"
+    if_orch_topic_consumer: "5groutes/orchestrationDomainA"
+    if_orch_topic_provider: "5groutes/orchestrationDomainB"
+    if_file_topic_consumer: "5groutes/loggingDomainA"
+    if_file_topic_provider: "5groutes/loggingDomainB"
+
+saosmconf: |
+  OSM:
+    osm_ip: "10.0.120.14"
+    osm_user: "admin"
+    osm_project: "admin"
+  K8scluster:
+    k8s_number: 1
+  # I need to have the token here to be able to connect to the OSM API
+  K8scluster1:
+    k8s_ip: "10.0.100.116"
+    k8s_token: "eyJhbGciOiJSUzI1NiIsImtpZCI6IkU5V1dtcGJpajB1c1BCNW1FOWpmZnU2Nm1DdnFHQkhydHhZQ0twQUZmWkEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tdDVycG0iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjdmZWRhZjNkLTU2NzktNGU3MC04ZTU5LTBlY2VjYzI1ZDk0NyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.bSRFROWs-qBLmaYrkRpLe9cpTdlPGWpSLGBt7aAcJnrTSZR_vh0dPcOvKUHeUfLUTjkdhSXirLeeYWyOHEgBkb-vmOm9r_hObd1ur0AjiiIg2dnylutW_TGtXZuQt6zlhGx4nkeWRVmmJ2u7OUn6LDtekGH_RPolcPR9Zhag3V-PckAZNAC_e7D4sZoSPn7aTWxCx7PfUKMMqo7eU0HIHwZJie4dAw4EKEUgMZAIAAfNQT16dJ8LtRMBXXim_w8Oj7A_BGwOhmqk6_Ss6KESXdou2wEltjHsy2wvV2MESo1KTXW9hTTW7iz9Ml8GN91L4zLz0cbCl_DzGsQXq47BKQ"
+

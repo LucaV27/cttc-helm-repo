@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "service-adapter.fullname" . }}-ifconfmap
+  labels: {{- include "service-adapter.labels" . | nindent 4 }}
+data: 
+  IFconf.yaml: {{- toYaml .Values.saifconf | nindent 2 }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "service-adapter.fullname" . }}-osmconfmap
+  labels: {{- include "service-adapter.labels" . | nindent 4 }}
+data: 
+  OSMconf.yaml: {{- toYaml .Values.saosmconf | nindent 2 }}
