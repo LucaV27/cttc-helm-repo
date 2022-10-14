@@ -3,12 +3,12 @@ entries:
   service-adapter:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-10-14T09:38:10.090130441Z"
+    created: "2022-10-14T09:54:11.669309187Z"
     description: A Helm chart for Kubernetes, implementing Service Adapter by CTTC
-    digest: 28e38de159f535a1145d9a8d6203acaebac0c6c66abd850eeb55660089d34e53
+    digest: 85879e69f44a0fe046738a08fec1aa84d00da0660bb684b213d66b2abd695c39
     name: service-adapter
     type: application
     urls:
-    - https://github.com/LucaV27/cttc-helm-repo/service-adapter-0.1.0.tgz
+    - service-adapter-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-14T09:38:10.088261642Z"
+generated: "2022-10-14T09:54:11.668085493Z"
